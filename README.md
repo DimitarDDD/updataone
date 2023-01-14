@@ -15,15 +15,15 @@ check requirements.txt
 
 Run the application.  
 1 install virtual env
--pip install virtualenv
+pip install virtualenv
 2 create virtual enviroment 
-- virtualenv <my_env_name>  
+ virtualenv <my_env_name>  
 3 run virtualenv 
-- <my_env_name>\Scripts\activate on Windows os 
+ <my_env_name>\Scripts\activate on Windows os 
 4 install requiremnts txt 
-- pip install requrements.txt  
+ pip install requrements.txt  
 5 run the project(website)
-- python manage.py runserver 
+ python manage.py runserver 
 
 Urls of the website. 
 If you are using the default port :
