@@ -1,0 +1,47 @@
+{% load static %}
+{% load bootstrap5 %}
+
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{# Load CSS and JavaScript #}
+
+
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+<!DOCTYPE html>   
+<html lang="en">  
+    <link rel="stylesheet" type="text/css" href="{% static '/css/base.css' %}">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg" >
+            <div class="container"> 
+                <a class="navbar-brand"><img src="https://img.freepik.com/free-vector/football-balls-flying-fire-background_1441-3921.jpg?w=1480&t=st=1673605258~exp=1673605858~hmac=b361a3da5ef723ff5d9a3c367e2a70d6bb5c34b1c5dcf1332ba80874ba37ff92" width="80" height="40" class="d-inline-block align-top" alt="">OpenLigaDb</a>              
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> 
+                        <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a></li>  
+                        <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'upcoming' %}">Upcoming</a></li>
+                        <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'ratio' %}">Win/Loss Ratio</a></li> 
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="text-center mt-5">
+                {% block content %} 
+                {% include 'openligadb/templates/message.html' %}
+                {% endblock %}
+            </div>
+        </div>
+    </body>
+</html> 
+<script>
+ 
+</script> 

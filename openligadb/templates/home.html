@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}  
+{% load static %} 
+<link rel="stylesheet" type="text/css" href="{% static '/css/index.css' %}">
+<div class="row height d-flex justify-content-center align-items-center"> 
+    <div class="col-md-6 justify-content-center align-items-center">
+        <h2>Search your team team</h2>
+        <form class="form-row" action="{% url 'search_team' %}">
+        <div class="form "> 
+                <input type="text" class="form-control" name="q" placeholder="Search a team">
+                <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+
+<hr>
+    <div class="col-lg-12">
+        <h2 class='text-bg-light p-3' >All Season Games</h2>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Home Team</th>
+                    <th>Score</th>
+                    <th>Away Team</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for game in all_games %}
+                <tr>
+                    <td>{{ game.MatchDateTimeUTC | slice:"0:10" }}</td>
+                    <td>{{ game.Team1.TeamName }}</td>
+                    <td>{{ game.MatchResults.0.PointsTeam1 }}:{{game.MatchResults.0.PointsTeam2}}</td>
+                    <td>{{ game.Team2.TeamName }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div> 
+
+{% endblock %}

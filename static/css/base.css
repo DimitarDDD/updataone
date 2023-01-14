@@ -1,0 +1,10 @@
+body {
+    background-image: url("https://img.freepik.com/premium-photo/football-field_52465-16.jpg?w=1380");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+nav {
+    background-color: rgb(0, 0, 0)
+}

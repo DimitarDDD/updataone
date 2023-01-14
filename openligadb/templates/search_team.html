@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %} 
+<link rel="stylesheet" type="text/css" href="{% static '/css/index.css' %}">
+<div class="row height d-flex justify-content-center align-items-center"> 
+    <div class="col-md-6 justify-content-center align-items-center">
+        <h2>Search your team team</h2>
+        <form class="form-row" action="{% url 'search_team' %}">
+        <div class="form "> 
+                <input type="text" class="form-control" name="q" placeholder="Search a team">
+                <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+<br>
+<div class="row">
+    <h3 class='bg-warning'>{{ err_msg }}</h3>
+</div>
+<hr>
+{% if not err_msg %}
+<div class="row">
+    <h3 class='text-bg-light p-3'>Upcoming game</h3>
+    {% if next_game is not None %}
+    <table class="table table-dark">
+        <thead>
+            <th>Date</th>
+            <th>Home Team</th>
+            <th>Away Team</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ next_game.MatchDateTimeUTC | slice:"0:10" }}</td>
+                <td>{{ next_game.Team1.TeamName }}</td>
+                <td>{{ next_game.Team2.TeamName }}</td>
+            </tr>
+        </tbody>
+    </table>
+    {% else%}
+    <p> No upcoming games for the team </p>
+    {% endif  %}
+</div>
+<hr>
+<div class="row">
+    <h3 class='text-bg-light p-3'>Win Loss Statistic</h3>
+    <table class="table table-dark">
+        <thead>
+            <th>Team Name</th>
+            <th>Wins</th> 
+            <th>Draw</th>
+            <th>Loss</th>
+            <th>Win Loss Ration</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ team_stats.TeamName }}</td>
+                <td>{{ team_stats.Won }}</td> 
+                <td>{{ team_stats.Draw }}</td>
+                <td>{{ team_stats.Lost }}</td>
+                <td>{{ team_stats.win_loss }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{% endif %}
+{% endblock %}
